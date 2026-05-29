@@ -1,3 +1,3 @@
-export interface Model<TData> {
-  toStruct(): TData;
+export abstract class Model<TData> {
+  abstract toStruct(): TData;
 }
