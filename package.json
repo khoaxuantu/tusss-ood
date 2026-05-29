@@ -1,0 +1,24 @@
+{
+  "name": "@tusss/ood",
+  "version": "1.0.0",
+  "description": "An out-of-nowhere object-oriented data/design library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "oop",
+    "ood",
+    "oo",
+    "object oriented design"
+  ],
+  "author": "Xuan Khoa Tu Nguyen",
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.0",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.4.0",
+    "globals": "^17.6.0",
+    "typescript-eslint": "^8.60.0"
+  }
+}

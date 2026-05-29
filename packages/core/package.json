@@ -1,0 +1,19 @@
+{
+  "name": "@tusss/ood",
+  "version": "1.0.0",
+  "description": "An out-of-nowhere object-oriented data/design library.",
+  "keywords": [
+    "oop",
+    "ood",
+    "oo",
+    "object oriented design"
+  ],
+  "author": "Xuan Khoa Tu Nguyen",
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/bun": "^1.3.14",
+    "typescript": "^6.0.3"
+  }
+}
