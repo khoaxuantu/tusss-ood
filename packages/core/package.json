@@ -21,7 +21,8 @@
     "prebuild": "rm -rf dist",
     "build": "bun run build.ts && bun run build:types",
     "build:types": "tsc --project d.tsconfig.json --emitDeclarationOnly",
-    "check:types": "tsc --noEmit --project d.tsconfig.json"
+    "check:types": "tsc --noEmit --project d.tsconfig.json",
+    "test": "bun test"
   },
   "sideEffects": false
 }
