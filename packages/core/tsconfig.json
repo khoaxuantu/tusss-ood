@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Base",
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolvePackageJsonExports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -22,8 +22,9 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "strict": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["bun"]
   },
   "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "build.ts"]
 }
