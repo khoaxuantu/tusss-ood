@@ -1,0 +1,22 @@
+{
+  // Input configs
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["../core/src/index.ts"],
+  "readme": "../../README.md",
+  "tsconfig": "../core/tsconfig.json",
+  "projectDocuments": ["manual/**/*.md"],
+
+  // Output configs
+  "out": "src",
+  "customCss": "./style.css",
+  "darkHighlightTheme": "one-dark-pro",
+  "lightHighlightTheme": "catppuccin-latte",
+  "typePrintWidth": 100,
+  "navigationLinks": {
+    "About Me": "https://xuankhoatu.com/about"
+  },
+  "router": "structure-dir",
+
+  "plugin": ["typedoc-material-theme"],
+  "themeColor": "#769CDF"
+}

@@ -1,6 +1,4 @@
-type Constructor<T = any> = {
-  new (...args: any[]): T;
-};
+import { Constructor } from "../types";
 
 /**
  * A class decorator / mixin function that implements the Singleton design pattern.

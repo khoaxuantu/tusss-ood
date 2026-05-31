@@ -1,0 +1,135 @@
+body {
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  scroll-margin-top: 88px;
+}
+
+p {
+  > code {
+    border-radius: 4px;
+    padding: 2px 6px;
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+  }
+}
+
+pre {
+  border: none;
+}
+
+code {
+  display: inline-block;
+}
+
+select,
+::picker(select) {
+  appearance: base-select;
+  cursor: pointer;
+  border-color: var(--md-sys-color-outline);
+}
+
+select {
+  &::picker-icon {
+    transition: 300ms rotate;
+    padding-right: 4px;
+    color: var(--md-sys-color-primary);
+    content: "🥚";
+  }
+
+  &:open::picker-icon {
+    content: "🐥";
+  }
+
+  & option {
+    transition: 300ms;
+
+    &:hover,
+    &:focus {
+      background-color: var(--md-sys-color-secondary-container);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--md-sys-color-secondary-container);
+  }
+}
+
+::picker(select) {
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: all 300ms allow-discrete;
+}
+:open::picker(select) {
+  opacity: 1;
+}
+@starting-style {
+  :open::picker(select) {
+    opacity: 0;
+  }
+}
+
+.container {
+  padding-inline: 1rem;
+}
+
+.col-content {
+  max-width: 768px;
+}
+
+.tsd-page-navigation-section {
+  & > div {
+    margin-left: 0;
+  }
+}
+
+.tsd-signature {
+  --color-ts-keyword: var(--hl-3);
+  --color-ts-project: var(--hl-4);
+  --color-ts-module: var(--hl-4);
+  --color-ts-namespace: var(--color-ts-project);
+  --color-ts-enum: var(--hl-4);
+  --color-ts-enum-member: var(--hl-0);
+  --color-ts-variable: var(--hl-11);
+  --color-ts-function: var(--hl-0);
+  --color-ts-class: var(--hl-16);
+  --color-ts-interface: var(--hl-16);
+  --color-ts-constructor: var(--hl-13);
+  --color-ts-property: var(--hl-11);
+  --color-ts-method: var(--hl-15);
+  --color-ts-call-signature: var(--color-ts-method);
+  --color-ts-index-signature: var(--color-ts-property);
+  --color-ts-constructor-signature: var(--color-ts-class);
+  --color-ts-parameter: var(--color-ts-variable);
+  --color-ts-type-parameter: var(--color-ts-interface);
+  --color-ts-accessor: var(--color-ts-property);
+  --color-ts-get-signature: var(--color-ts-accessor);
+  --color-ts-set-signature: var(--color-ts-accessor);
+  --color-ts-type-alias: var(--color-ts-interface);
+
+  border: none;
+  font-family: var(--font-mono);
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+/* Apply the custom animation to the old and new page states */
+::view-transition-old(root) {
+  animation: 300ms ease-in both fade-out;
+}
+::view-transition-new(root) {
+  animation: 300ms ease-in both fade-in;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
