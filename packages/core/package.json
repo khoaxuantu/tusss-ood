@@ -19,7 +19,8 @@
     "typescript": "^6.0.3"
   },
   "scripts": {
-    "build": "rimraf dist && bun run build:compile && bun run build:types",
+    "prebuild": "rimraf dist && rimraf d.tsconfig.tsbuildinfo",
+    "build": "bun run build:compile && bun run build:types",
     "build:compile": "bun run build.ts",
     "build:types": "tsc --project d.tsconfig.json",
     "check:types": "tsc --noEmit --project d.tsconfig.json",
