@@ -11,3 +11,7 @@ A lightweight object-oriented utilities for TypeScript that help you:
 ```bash
 npm install @tusss/ood
 ```
+
+## Documentation
+
+https://khoaxuantu.github.io/tusss-ood/
