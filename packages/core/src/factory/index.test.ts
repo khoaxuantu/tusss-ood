@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { Factory, FactoryMaterial, FactoryOrchestrator } from ".";
+import { Factory, FactoryDirector, FactoryMaterial } from ".";
 
 type TMaterialType = "A" | "B";
 
@@ -26,7 +26,7 @@ class FactoryB extends Factory<Product> {
   }
 }
 
-class Orchestrator extends FactoryOrchestrator<Product> {
+class Director extends FactoryDirector<Product> {
   override cluster: Map<TMaterialType, new (material: FactoryMaterial) => Factory<Product>>;
 
   constructor() {
@@ -39,16 +39,16 @@ class Orchestrator extends FactoryOrchestrator<Product> {
   }
 }
 
-const orchestrator = new Orchestrator();
+const director = new Director();
 
 describe("Factory", () => {
   test("A", () => {
-    const result = orchestrator.create(new MaterialA());
+    const result = director.create(new MaterialA());
     expect(result).toEqual(new Product("A"));
   });
 
   test("B", () => {
-    const result = orchestrator.create(new MaterialB());
+    const result = director.create(new MaterialB());
     expect(result).toEqual(new Product("B"));
   });
 });

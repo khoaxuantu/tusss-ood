@@ -2,7 +2,7 @@
  * Abstract base class representing a material used by a factory to create products.
  *
  * Each material must have a distinct type associated with it, which is used
- * by the {@link FactoryOrchestrator} to dispatch the material to the correct factory.
+ * by the {@link FactoryDirector} to dispatch the material to the correct factory.
  *
  * @template T The type constraint for the material's type identifier, defaulting to `string`.
  */
@@ -72,25 +72,25 @@ export abstract class Factory<TProduct> {
  *   }
  * }
  *
- * class Orchestrator extends FactoryOrchestrator<Product> {
+ * class Director extends FactoryDirector<Product> {
  *   override cluster = new Map<TMaterialType, new (material: FactoryMaterial) => Factory<Product>>([
  *     ["A", FactoryA],
  *     ["B", FactoryB],
  *   ]);
  * }
  *
- * const orchestrator = new Orchestrator();
- * const productA = orchestrator.create(new MaterialA()); // Product { name: "A" }
+ * const director = new Director();
+ * const productA = director.create(new MaterialA()); // Product { name: "A" }
  * ```
  */
-export abstract class FactoryOrchestrator<TProduct> {
+export abstract class FactoryDirector<TProduct> {
   /**
    * Map containing factory constructor associations keyed by material type name.
    */
   readonly cluster: Map<string, new (material: FactoryMaterial) => Factory<TProduct>>;
 
   /**
-   * Initializes a new factory orchestrator with an empty factory cluster.
+   * Initializes a new factory Director with an empty factory cluster.
    */
   constructor() {
     this.cluster = new Map();

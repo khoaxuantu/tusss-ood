@@ -54,3 +54,14 @@ export type ClassProperties<C> = {
 export type Constructor<T = any> = {
   new (...args: any[]): T;
 };
+
+/**
+ * Type helper to allow a string literal to be used as a key or a regular string. By setting this
+ * type, you can benefit from LSP's autocompletion feature, as well as type checking.
+ */
+export type KeyOrString<T extends string> = T | (string & {});
+
+/**
+ * Type helper representing the type of application's environment.
+ */
+export type EnvironmentType = KeyOrString<"development" | "test" | "staging" | "production">;
