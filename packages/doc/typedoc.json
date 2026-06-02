@@ -5,6 +5,7 @@
   "readme": "../../README.md",
   "tsconfig": "../core/tsconfig.json",
   "projectDocuments": ["manual/**/*.md"],
+  "sourceLinkTemplate": "https://github.com/khoaxuantu/tusss-ood/tree/main/{path}#L{line}",
 
   // Output configs
   "out": "src",
@@ -16,6 +17,7 @@
     "About Me": "https://xuankhoatu.com/about"
   },
   "router": "structure-dir",
+  "sourceLinkExternal": true,
 
   "plugin": ["typedoc-material-theme"],
   "themeColor": "#769CDF"
