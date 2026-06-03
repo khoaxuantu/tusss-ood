@@ -6,6 +6,7 @@
   "tsconfig": "../core/tsconfig.json",
   "projectDocuments": ["manual/**/*.md"],
   "sourceLinkTemplate": "https://github.com/khoaxuantu/tusss-ood/tree/main/{path}#L{line}",
+  "excludeExternals": true,
 
   // Output configs
   "out": "src",

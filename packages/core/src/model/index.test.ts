@@ -30,4 +30,13 @@ describe("Model", () => {
       expect(obj.toStruct() instanceof TestCls).toBe(false);
     });
   });
+
+  describe("toJSON", () => {
+    it("should serialize like struct", () => {
+      const obj = new TestCls();
+      const json = JSON.stringify(obj);
+
+      expect(json).toBe(JSON.stringify(obj.toStruct()));
+    });
+  });
 });

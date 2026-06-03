@@ -1,5 +1,30 @@
 import { ClassProperties } from "../types";
 
+export interface IModel<TData> {
+  /**
+   * Converts the model instance into a plain data structure (struct).
+   *
+   * This method extracts the model's property data, removing functions, methods,
+   * or class-specific instance details, returning a clean structural representation.
+   *
+   * @returns A plain object structure containing the model's serializable properties.
+   */
+  toStruct(): ClassProperties<TData>;
+
+  /**
+   * Implements the {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify | JSON.stringify()} behavior.
+   *
+   * It uses {@link toStruct} to get the plain object structure under the hood.
+   *
+   * It is encouraged to use {@link toStruct} instead of this method because it provides better
+   * clarity and expressiveness about the data structure being serialized. This method is provided
+   * only to support the `JSON.stringify()` serialization.
+   *
+   * @returns A plain object structure containing the model's serializable properties.
+   */
+  toJSON(): ClassProperties<TData>;
+}
+
 /**
  * Abstract base class representing a domain model in the application.
  *
@@ -37,14 +62,10 @@ import { ClassProperties } from "../types";
  * const struct = user.toStruct(); // { name: "Alice", sub: { value: 42 } }
  * ```
  */
-export abstract class Model<TData> {
-  /**
-   * Converts the model instance into a plain data structure (struct).
-   *
-   * This method extracts the model's property data, removing functions, methods,
-   * or class-specific instance details, returning a clean structural representation.
-   *
-   * @returns A plain object structure containing the model's serializable properties.
-   */
+export abstract class Model<TData> implements IModel<TData> {
   abstract toStruct(): ClassProperties<TData>;
+
+  toJSON(): ClassProperties<TData> {
+    return this.toStruct();
+  }
 }
