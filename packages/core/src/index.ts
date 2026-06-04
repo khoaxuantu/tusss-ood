@@ -4,6 +4,7 @@ export * from "./counter";
 export * from "./error";
 export * from "./factory";
 export * from "./model";
+export * from "./pagination";
 export * from "./printer";
 export * from "./result";
 export * from "./singleton";
