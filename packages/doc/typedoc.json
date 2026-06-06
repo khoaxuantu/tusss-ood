@@ -15,6 +15,7 @@
   "lightHighlightTheme": "catppuccin-latte",
   "typePrintWidth": 100,
   "navigationLinks": {
+    "GitHub": "https://github.com/khoaxuantu/tusss-ood",
     "About Me": "https://xuankhoatu.com/about"
   },
   "router": "structure-dir",
