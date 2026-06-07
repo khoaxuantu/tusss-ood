@@ -90,18 +90,18 @@ select {
 
 .tsd-signature {
   --color-ts-keyword: var(--hl-3);
-  --color-ts-project: var(--hl-4);
-  --color-ts-module: var(--hl-4);
+  --color-ts-project: var(--hl-15);
+  --color-ts-module: var(--hl-15);
   --color-ts-namespace: var(--color-ts-project);
-  --color-ts-enum: var(--hl-4);
+  --color-ts-enum: var(--hl-15);
   --color-ts-enum-member: var(--hl-0);
-  --color-ts-variable: var(--hl-11);
+  --color-ts-variable: var(--hl-12);
   --color-ts-function: var(--hl-0);
-  --color-ts-class: var(--hl-16);
-  --color-ts-interface: var(--hl-16);
+  --color-ts-class: var(--hl-11);
+  --color-ts-interface: var(--hl-11);
   --color-ts-constructor: var(--hl-13);
-  --color-ts-property: var(--hl-11);
-  --color-ts-method: var(--hl-15);
+  --color-ts-method: var(--color-ts-function);
+  --color-ts-property: var(--color-ts-variable);
   --color-ts-call-signature: var(--color-ts-method);
   --color-ts-index-signature: var(--color-ts-property);
   --color-ts-constructor-signature: var(--color-ts-class);

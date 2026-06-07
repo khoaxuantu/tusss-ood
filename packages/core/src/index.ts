@@ -1,3 +1,4 @@
+export * from "./batch-executor";
 export * from "./builder";
 export * from "./config-loader";
 export * from "./counter";
