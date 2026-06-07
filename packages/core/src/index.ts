@@ -8,4 +8,5 @@ export * from "./pagination";
 export * from "./printer";
 export * from "./result";
 export * from "./singleton";
+export * from "./sort";
 export * from "./types";
