@@ -2,7 +2,8 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Base",
   "compilerOptions": {
-    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "module": "ES6",
     "moduleResolution": "bundler",
     "resolvePackageJsonExports": true,
     "esModuleInterop": true,
@@ -11,7 +12,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2023",
+    "target": "ES6",
     "sourceMap": true,
     "incremental": true,
     "skipLibCheck": true,

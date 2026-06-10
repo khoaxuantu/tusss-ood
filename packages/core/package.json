@@ -6,7 +6,8 @@
     "oop",
     "ood",
     "oo",
-    "object oriented design"
+    "object oriented design",
+    "data"
   ],
   "type": "module",
   "author": "Xuan Khoa Tu Nguyen",
@@ -21,7 +22,7 @@
   },
   "scripts": {
     "prebuild": "rimraf dist && rimraf d.tsconfig.tsbuildinfo",
-    "build": "bun run build:compile && bun run build:types",
+    "build": "bun run check:types && bun run build:compile && bun run build:types",
     "build:compile": "bun run build.ts",
     "build:types": "tsc --project d.tsconfig.json",
     "check:types": "tsc --noEmit --project d.tsconfig.json",
@@ -30,12 +31,19 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/khoaxuantu/tusss-ood"
+    "url": "https://github.com/khoaxuantu/tusss-ood.git"
   },
   "homepage": "https://khoaxuantu.github.io/tusss-ood",
   "files": [
     "dist",
     "README.md",
     "LICENSE"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  }
 }
