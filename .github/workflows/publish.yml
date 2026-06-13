@@ -1,0 +1,34 @@
+name: Publish Core Package
+
+on:
+  push:
+    tags:
+      - "v*" # Trigger only when you push a tag like v1.0.0
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10.33.0
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Core
+        run: pnpm core:build
+
+      - name: Publish to NPM
+        run: pnpm publish --filter @tusss/ood --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

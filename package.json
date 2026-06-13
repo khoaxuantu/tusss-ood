@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "An out-of-nowhere object-oriented data/design library.",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "core:build": "pnpm run --filter @tusss/ood build",
+    "doc:dev": "pnpm run --filter @tusss/ood-typedoc dev",
+    "doc:build": "pnpm run --filter @tusss/ood-typedoc build"
   },
   "keywords": [
     "oop",
