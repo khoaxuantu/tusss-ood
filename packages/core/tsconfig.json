@@ -23,8 +23,11 @@
     "noFallthroughCasesInSwitch": false,
     "strict": true,
     "outDir": "dist",
-    "types": ["bun"]
+    "types": ["bun"],
+    "paths": {
+      "#test": ["./test/bun.ts"]
+    }
   },
   "exclude": ["node_modules", "dist"],
-  "include": ["src/**/*.ts", "build.ts"]
+  "include": ["src/**/*.ts", "build.ts", "test/**/*.ts"]
 }

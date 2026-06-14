@@ -1,5 +1,5 @@
-import { describe, expect, it } from "bun:test";
-import { Printer } from ".";
+import { describe, expect, it } from "#test";
+import { Printer } from "./index";
 
 describe("Printer - class", () => {
   class TestCls extends Printer {

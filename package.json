@@ -1,11 +1,12 @@
 {
   "name": "tusss-ood",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "An out-of-nowhere object-oriented data/design library.",
   "main": "index.js",
   "private": true,
   "scripts": {
     "core:build": "pnpm run --filter @tusss/ood build",
+    "core:test": "pnpm run --filter @tusss/ood test",
     "doc:dev": "pnpm run --filter @tusss/ood-typedoc dev",
     "doc:build": "pnpm run --filter @tusss/ood-typedoc build"
   },

@@ -16,9 +16,19 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "devDependencies": {
+    "@std/expect": "jsr:^1.0.19",
+    "@std/testing": "jsr:^1.0.19",
     "@types/bun": "^1.3.14",
     "rimraf": "^6.1.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8"
+  },
+  "imports": {
+    "#test": {
+      "bun": "./test/bun.ts",
+      "deno": "./test/deno.ts",
+      "default": "./test/node.ts"
+    }
   },
   "scripts": {
     "prebuild": "rimraf dist && rimraf d.tsconfig.tsbuildinfo",
@@ -26,7 +36,10 @@
     "build:compile": "bun run build.ts",
     "build:types": "tsc --project d.tsconfig.json",
     "check:types": "tsc --noEmit --project d.tsconfig.json",
-    "test": "bun test"
+    "test:bun": "bun test",
+    "test:node": "vitest run",
+    "test:deno": "deno test src/**/*.test.ts --no-check --sloppy-imports",
+    "test": "bun run test:bun && bun run test:node && bun run test:deno"
   },
   "sideEffects": false,
   "repository": {

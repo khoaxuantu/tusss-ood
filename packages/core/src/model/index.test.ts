@@ -1,6 +1,6 @@
-import { describe, expect, it } from "bun:test";
-import { Model } from ".";
+import { describe, expect, it } from "#test";
 import { ClassProperties } from "../types";
+import { Model } from "./index";
 
 class SubTestCls extends Model<SubTestCls> {
   b = 2;

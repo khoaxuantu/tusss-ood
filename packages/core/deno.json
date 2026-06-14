@@ -1,0 +1,15 @@
+{
+  "imports": {
+    "#test": "./test/deno.ts"
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-sloppy-imports"]
+    }
+  },
+  "compilerOptions": {
+    "paths": {
+      "#test": ["./test/deno.ts"]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@tusss/ood-typedoc",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "An out-of-nowhere object-oriented data/design library.",
   "main": "index.js",
   "scripts": {

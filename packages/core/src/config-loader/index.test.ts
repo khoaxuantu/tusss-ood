@@ -1,6 +1,6 @@
-import { describe, expect, it } from "bun:test";
-import { Config, ConfigLoaderDirector, ConfigLoaderPool, IConfigLoader } from ".";
+import { describe, expect, it } from "#test";
 import { KeyOrString } from "../types";
+import { Config, ConfigLoaderDirector, ConfigLoaderPool, IConfigLoader } from "./index";
 
 describe("ConfigLoader", () => {
   type AppConfig = Config<{
@@ -42,10 +42,12 @@ describe("ConfigLoader", () => {
 
   const configDirector = new ConfigLoaderDirector(pool);
 
-  it.each(["development", "test"])("should load config for environment: %s", async (env) => {
-    const config = await configDirector.customizeEnv(() => env).load();
-    expect(config.environment).toBe(env);
-  });
+  for (const env of ["development", "test"].values()) {
+    it(`should load config for environment: ${env}`, async () => {
+      const config = await configDirector.customizeEnv(() => env).load();
+      expect(config.environment).toBe(env);
+    });
+  }
 
   it("should return default loader on unknown environment", async () => {
     const config = await configDirector.customizeEnv(() => "unknown").load();

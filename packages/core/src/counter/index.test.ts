@@ -1,5 +1,5 @@
-import { describe, expect, test } from "bun:test";
-import { Counter } from ".";
+import { describe, expect, test } from "#test";
+import { Counter } from "./index";
 
 describe(Counter, () => {
   test("increment", () => {

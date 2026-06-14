@@ -1,5 +1,5 @@
-import { describe, expect, it } from "bun:test";
-import { Builder } from ".";
+import { describe, expect, it } from "#test";
+import { Builder } from "./index";
 
 interface User {
   name: string;

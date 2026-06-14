@@ -1,5 +1,5 @@
-import { describe, expect, test } from "bun:test";
-import { Singleton } from ".";
+import { describe, expect, test } from "#test";
+import { Singleton } from "./index";
 
 class TestBlueprint {
   a = "a";

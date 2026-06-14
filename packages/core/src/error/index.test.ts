@@ -1,5 +1,5 @@
-import { describe, expect, it } from "bun:test";
-import { ErrorBase } from ".";
+import { describe, expect, it } from "#test";
+import { ErrorBase } from "./index";
 
 describe(ErrorBase, () => {
   it("should create an ErrorBase instance", () => {

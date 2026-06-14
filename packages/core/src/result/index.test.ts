@@ -1,6 +1,6 @@
-import { describe, expect, it } from "bun:test";
-import { Result } from ".";
+import { describe, expect, it } from "#test";
 import { ErrorBase } from "../error";
+import { Result } from "./index";
 
 describe(Result, () => {
   it("should create ok result", () => {
