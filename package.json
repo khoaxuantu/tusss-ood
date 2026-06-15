@@ -7,6 +7,7 @@
   "scripts": {
     "core:build": "pnpm run --filter @tusss/ood build",
     "core:test": "pnpm run --filter @tusss/ood test",
+    "core:check": "pnpm run --filter @tusss/ood check:types",
     "doc:dev": "pnpm run --filter @tusss/ood-typedoc dev",
     "doc:build": "pnpm run --filter @tusss/ood-typedoc build"
   },
