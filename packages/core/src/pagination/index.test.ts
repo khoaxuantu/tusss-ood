@@ -1,5 +1,5 @@
-import { describe, expect, test } from "bun:test";
-import { Paginable, Pagination, PaginationResult } from ".";
+import { describe, expect, test } from "#test";
+import { Paginable, Pagination, PaginationResult } from "./index";
 
 describe(Pagination, () => {
   test("skip", () => {

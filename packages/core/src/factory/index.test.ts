@@ -1,5 +1,5 @@
-import { describe, expect, test } from "bun:test";
-import { Factory, FactoryDirector, FactoryMaterial } from ".";
+import { describe, expect, test } from "#test";
+import { Factory, FactoryDirector, FactoryMaterial } from "./index";
 
 type TMaterialType = "A" | "B";
 

@@ -1,5 +1,5 @@
-import { describe, expect, it } from "bun:test";
-import { Sort } from ".";
+import { describe, expect, it } from "#test";
+import { Sort } from "./index";
 
 describe(Sort, () => {
   it("should create a default sort", () => {

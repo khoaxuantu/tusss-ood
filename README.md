@@ -1,4 +1,4 @@
-# Tusss OOD Library (Proposal)
+# Tusss OOD Library
 
 A lightweight object-oriented utilities for TypeScript that help you:
 
