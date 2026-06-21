@@ -4,7 +4,7 @@
   "entryPoints": ["../core/src/index.ts"],
   "readme": "../../README.md",
   "tsconfig": "../core/tsconfig.json",
-  "projectDocuments": ["manual/**/*.md"],
+  "projectDocuments": ["manual/*.md"],
   "sourceLinkTemplate": "https://github.com/khoaxuantu/tusss-ood/tree/main/{path}#L{line}",
   "excludeExternals": true,
 
