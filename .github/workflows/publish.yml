@@ -30,5 +30,3 @@ jobs:
 
       - name: Publish to NPM
         run: pnpm publish --filter @tusss/ood --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
