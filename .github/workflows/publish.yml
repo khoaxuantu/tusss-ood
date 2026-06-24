@@ -33,6 +33,7 @@ jobs:
         run: pnpm core:test
 
   publish:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
