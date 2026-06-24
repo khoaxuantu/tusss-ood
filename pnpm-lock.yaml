@@ -51,19 +51,6 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1(typedoc@0.28.19(typescript@6.0.3))
 
-  packages/tmp:
-    dependencies:
-      '@tusss/ood':
-        specifier: file:../core/tusss-ood-1.0.0.tgz
-        version: file:packages/core/tusss-ood-1.0.0.tgz
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
-    devDependencies:
-      '@tsconfig/next':
-        specifier: ^2.0.6
-        version: 2.0.6
-
 packages:
 
   '@emnapi/core@1.10.0':
@@ -291,13 +278,6 @@ packages:
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
-
-  '@tsconfig/next@2.0.6':
-    resolution: {integrity: sha512-C6eZoNyAMKv2UvzDZqcp8zXPviu6W4Ev1KUbqfmaMSZuq+tmbtTWaqxTif/yaui8WCEcRlQrHC8q9tNzBclHOw==}
-
-  '@tusss/ood@file:packages/core/tusss-ood-1.0.0.tgz':
-    resolution: {integrity: sha512-bDBv69guojEaJVdcov85Ixs7i4pXrBgdaGKJUDznZ5c/R5VjBRNiA2r7CzzMqaewLIqZety3EVVYB2wefNjWIQ==, tarball: file:packages/core/tusss-ood-1.0.0.tgz}
-    version: 1.0.0
 
   '@tybys/wasm-util@0.10.2':
     resolution: {integrity: sha512-RoBvJ2X0wuKlWFIjrwffGw1IqZHKQqzIchKaadZZfnNpsAYp2mM0h36JtPCjNDAHGgYez/15uMBpfGwchhiMgg==}
@@ -1206,10 +1186,6 @@ snapshots:
   '@shikijs/vscode-textmate@10.0.2': {}
 
   '@standard-schema/spec@1.1.0': {}
-
-  '@tsconfig/next@2.0.6': {}
-
-  '@tusss/ood@file:packages/core/tusss-ood-1.0.0.tgz': {}
 
   '@tybys/wasm-util@0.10.2':
     dependencies:
