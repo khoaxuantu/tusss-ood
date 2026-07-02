@@ -2,14 +2,15 @@
 title: recipe
 children:
   - ./recipe/nestjs/config-loader.md
-  - ./recipe/log-error.md
-  - ./recipe/db-pagination-sorting.md
   - ./recipe/batch-processing.md
-  - ./recipe/notification-factory.md
-  - ./recipe/singleton.md
   - ./recipe/counter.md
+  - ./recipe/db-pagination-sorting.md
+  - ./recipe/log-error.md
   - ./recipe/model.md
+  - ./recipe/notification-factory.md
   - ./recipe/printer.md
+  - ./recipe/result.md
+  - ./recipe/singleton.md
 ---
 
 # Recipes
@@ -25,3 +26,4 @@ This section contains a collection of practical recipes, code examples, and inte
 - [Counter for sequential operations](./recipe/counter.md)
 - [Domain modeling with Model](./recipe/model.md)
 - [Formatting and logging with Printer](./recipe/printer.md)
+- [Result pattern](./recipe/result.md)
