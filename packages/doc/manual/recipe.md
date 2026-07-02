@@ -9,6 +9,7 @@ children:
   - ./recipe/singleton.md
   - ./recipe/counter.md
   - ./recipe/model.md
+  - ./recipe/printer.md
 ---
 
 # Recipes
@@ -23,3 +24,4 @@ This section contains a collection of practical recipes, code examples, and inte
 - [Singleton pattern for shared services](./recipe/singleton.md)
 - [Counter for sequential operations](./recipe/counter.md)
 - [Domain modeling with Model](./recipe/model.md)
+- [Formatting and logging with Printer](./recipe/printer.md)
