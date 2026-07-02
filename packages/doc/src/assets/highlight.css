@@ -59,6 +59,10 @@
     --dark-hl-28: #E06C75;
     --light-hl-29: #40A02B;
     --dark-hl-29: #ABB2BF;
+    --light-hl-30: #EA76CB;
+    --dark-hl-30: #E5C07B;
+    --light-hl-31: #DF8E1D;
+    --dark-hl-31: #D19A66;
     --light-code-background: #eff1f5;
     --dark-code-background: #282c34;
 }
@@ -94,6 +98,8 @@
     --hl-27: var(--light-hl-27);
     --hl-28: var(--light-hl-28);
     --hl-29: var(--light-hl-29);
+    --hl-30: var(--light-hl-30);
+    --hl-31: var(--light-hl-31);
     --code-background: var(--light-code-background);
 } }
 
@@ -128,6 +134,8 @@
     --hl-27: var(--dark-hl-27);
     --hl-28: var(--dark-hl-28);
     --hl-29: var(--dark-hl-29);
+    --hl-30: var(--dark-hl-30);
+    --hl-31: var(--dark-hl-31);
     --code-background: var(--dark-code-background);
 } }
 
@@ -162,6 +170,8 @@
     --hl-27: var(--light-hl-27);
     --hl-28: var(--light-hl-28);
     --hl-29: var(--light-hl-29);
+    --hl-30: var(--light-hl-30);
+    --hl-31: var(--light-hl-31);
     --code-background: var(--light-code-background);
 }
 
@@ -196,6 +206,8 @@
     --hl-27: var(--dark-hl-27);
     --hl-28: var(--dark-hl-28);
     --hl-29: var(--dark-hl-29);
+    --hl-30: var(--dark-hl-30);
+    --hl-31: var(--dark-hl-31);
     --code-background: var(--dark-code-background);
 }
 
@@ -229,4 +241,6 @@
 .hl-27 { color: var(--hl-27); }
 .hl-28 { color: var(--hl-28); }
 .hl-29 { color: var(--hl-29); }
+.hl-30 { color: var(--hl-30); }
+.hl-31 { color: var(--hl-31); }
 pre, code { background: var(--code-background); }

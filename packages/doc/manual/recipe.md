@@ -8,6 +8,7 @@ children:
   - ./recipe/notification-factory.md
   - ./recipe/singleton.md
   - ./recipe/counter.md
+  - ./recipe/model.md
 ---
 
 # Recipes
@@ -21,3 +22,4 @@ This section contains a collection of practical recipes, code examples, and inte
 - [Notification dispatcher using Factory & FactoryDirector](./recipe/notification-factory.md)
 - [Singleton pattern for shared services](./recipe/singleton.md)
 - [Counter for sequential operations](./recipe/counter.md)
+- [Domain modeling with Model](./recipe/model.md)
