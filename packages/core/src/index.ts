@@ -2,6 +2,7 @@ export * from "./batch-executor";
 export * from "./builder";
 export * from "./config-loader";
 export * from "./counter";
+export * from "./decimal-precision";
 export * from "./error";
 export * from "./factory";
 export * from "./model";
