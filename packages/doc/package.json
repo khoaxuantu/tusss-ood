@@ -15,7 +15,7 @@
   ],
   "author": "Xuan Khoa Tu Nguyen",
   "license": "MIT",
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@11.25.0",
   "devDependencies": {
     "typedoc": "^0.28.19",
     "typedoc-material-theme": "^1.4.1"
