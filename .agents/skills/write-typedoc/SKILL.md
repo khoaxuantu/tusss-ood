@@ -38,3 +38,5 @@ further references.
 - Do not add comments to test files. The test file name may contain these formats:
   - `*.test.ts`
   - `*.spec.ts`
+- Do not modify any logic of code.
+- Run test after modification. I will decide whether to test or not by myself.

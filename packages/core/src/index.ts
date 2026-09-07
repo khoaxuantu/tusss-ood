@@ -5,6 +5,7 @@ export * from "./counter";
 export * from "./decimal-precision";
 export * from "./error";
 export * from "./factory";
+export * from "./handler";
 export * from "./model";
 export * from "./pagination";
 export * from "./printer";
