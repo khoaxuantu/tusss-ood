@@ -63,7 +63,7 @@ class BookingService {
 That `BookingService` class is a component of a very popular pattern, in which we implement a
 domain controller composited with one or more domain services.
 
-Although the service has deprecated the request serialization and validation to the controller, the
+Although the service has delegated the request serialization and validation to the controller, the
 mutation method still has to handle at least 5 branches.
 
 These much of branches left several drawbacks on the scalability of logic:
@@ -140,7 +140,7 @@ class BookingHandlerCheck extends Handler<BookginMutationStatusContext> {
       return;
     }
 
-    const canUpdate = booking.canUpdateBy(user);
+    const canUpdate = ctx.output.data.canUpdateBy(user);
     if (!canUpdate) {
       ctx.error = new ErrorApp("403", "Cannot update booking");
       return;
@@ -173,22 +173,6 @@ class BookingHandlerUpdate extends Handler<BookingMutationStatusContext> {
 }
 ```
 
-### Defining handler pipeline
-
-A pipeline chains together individual handlers in an ordered execution flow to fulfill a complete business request.
-
-```ts
-class BookingHandlerMutationPipeline extends HandlerPipeline<BookingMutationStatusContext> {
-  constructor(repository: BookingRepository, eventBus: EventBus) {
-    super([
-      new BookingHandlerLoad(repository),
-      new BookingHandlerCheck(),
-      new BookingHandlerUpdate(repository, eventBus),
-    ]);
-  }
-}
-```
-
 ### Defining handler provider
 
 A provider acts as a domain-level factory exposing ready-to-use pipelines instantiated with the required dependencies.
@@ -201,7 +185,11 @@ class BookingHandlerProvider {
   ) {}
 
   get mutation() {
-    return new BookingHandlerMutationPipeline(this.repository, this.eventBus);
+    return new HandlerPipeline<BookingMutationStatusContext>([
+      new BookingHandlerLoad(this.repository),
+      new BookingHandlerCheck(),
+      new BookingHandlerUpdate(this.repository, this.eventBus),
+    ]);
   }
 }
 ```
