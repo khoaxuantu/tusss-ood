@@ -2,7 +2,7 @@ import { describe, expect, test } from "#test";
 import { DecimalPrecision } from "./index";
 
 describe("CalcHelper", () => {
-  describe(DecimalPrecision.name, () => {
+  describe("DecimalPrecision", () => {
     describe("round", () => {
       test("rounding of half", () => {
         expect(DecimalPrecision.round(0.5)).toEqual(1);
