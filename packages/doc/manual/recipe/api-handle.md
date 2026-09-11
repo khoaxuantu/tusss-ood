@@ -26,7 +26,7 @@ If we put all the logic in a single handler function, it will become very long a
 
 Even when we can split logic into different layers following up the backend framework architecture;
 e.g., NestJS with serialization & validation in controller, business logic in service; it is still
-too complicated. In my past experiences, I met many class like that:
+too complicated. In my past experiences, I met many classes like that:
 
 ```ts
 class BookingService {
@@ -91,7 +91,8 @@ A handler provider can be counted as a hub that provide one handler pipeline for
 
 ### Defining context
 
-A context encapsulates the input parameters, mutable state, output payload, and optional errors passed down across steps in the pipeline.
+A context encapsulates the input parameters, mutable state, output payload, and optional errors
+passed down across steps in the pipeline.
 
 ```ts
 class BookingMutationStatusContext implements IHandlerContext {
@@ -114,7 +115,8 @@ class BookingMutationStatusContext implements IHandlerContext {
 
 ### Defining handlers
 
-Each handler represents an isolated processing step (e.g. loading, validating, updating) that executes its logic on the context and calls `super.handle(ctx)` to proceed to the next handler.
+Each handler represents an isolated processing step (e.g. loading, validating, updating) that
+executes its logic on the context and calls `super.handle(ctx)` to proceed to the next handler.
 
 ```ts
 class BookingHandlerLoad extends Handler<BookingMutationStatusContext> {
@@ -196,7 +198,8 @@ class BookingHandlerProvider {
 
 ## Usage example
 
-With the handlers and pipeline encapsulated within the provider, the controller only needs to initialize the context and delegate execution to the pipeline:
+With the handlers and pipeline encapsulated within the provider, the controller only needs to
+initialize the context and delegate execution to the pipeline:
 
 ```ts
 class BookingController {
@@ -217,7 +220,49 @@ class BookingController {
 }
 ```
 
-This keeps the controller slim and declarative:
+## Advantages
 
+- It keeps the controller slim and declarative.
 - Each handler remains single-purposed, highly reusable, and easily testable in isolation.
-- Adding new pre-conditions, steps, or side effects only requires appending a new handler to the pipeline without modifying existing handler logic.
+- Adding new pre-conditions, steps, or side effects only requires appending a new handler to the
+  pipeline without modifying existing handler logic.
+- The god provider class now doesn't have to contain any business logic anymore. It just only takes
+  one responsibility of composing handler pipelines, which can be easier to test and maintain.
+  For instance:
+
+  ```ts
+  class BookingHandlerProvider {
+    readonly mutation: HandlerPipeline<BookingMutationStatusContext>;
+    readonly delete: HandlerPipeline<BookingDeleteContext>;
+    readonly create: HandlerPipeline<BookingCreateContext>;
+    readonly filter: HandlerPipeline<BookingFilterContext>;
+
+    constructor(
+      private readonly repository: BookingRepository,
+      private readonly eventBus: EventBus,
+    ) {
+      this.mutation = new HandlerPipeline<BookingMutationStatusContext>([
+        new BookingHandlerLoad(this.repository),
+        new BookingHandlerCheck(),
+        new BookingHandlerUpdate(this.repository, this.eventBus),
+      ]);
+
+      this.delete = new HandlerPipeline<BookingDeleteContext>([
+        new BookingHandlerLoad(this.repository),
+        new BookingHandlerCheck(),
+        new BookingHandlerDelete(this.repository),
+      ]);
+
+      this.create = new HandlerPipeline<BookingCreateContext>([
+        new BookingHandlerCheckConflict(this.repository),
+        new BookingHandlerCreate(this.repository),
+      ]);
+
+      this.filter = new HandlerPipeline<BookingFilterContext>([
+        new BookingHandlerFilterCheck(),
+        new BookingHandlerFilter(this.repository),
+        new BookingHandlerPopulate(this.repository),
+      ]);
+    }
+  }
+  ```
