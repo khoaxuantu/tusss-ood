@@ -94,22 +94,10 @@ A handler provider can be counted as a hub that provide one handler pipeline for
 A context encapsulates the input parameters, mutable state, output payload, and optional errors passed down across steps in the pipeline.
 
 ```ts
-class BookingMutationStatusContext implements IHandlerContext {
-  input: {
-    id: number;
-    nextStatus: string;
-  };
-  output: Result<Booking>;
-  error?: ErrorBase;
-
-  constructor(
-    input: BookingMutationStatusContext["input"],
-    output: BookingMutationStatusContext["output"],
-  ) {
-    this.input = input;
-    this.output = output;
-  }
-}
+class BookingMutationStatusContext extends HandlerContext<
+  { id: number; nextStatus: string },
+  Result<Booking>
+> {}
 ```
 
 ### Defining handlers
