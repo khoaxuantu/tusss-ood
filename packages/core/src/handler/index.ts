@@ -55,7 +55,7 @@ export abstract class HandlerContext<TInput = any, TOutput extends Result<any> =
   /*
    * An shorthand accessor for the error on the output.
    */
-  get error() {
+  get error(): ErrorBase | undefined {
     return this.output.error;
   }
 
@@ -164,7 +164,7 @@ export abstract class Handler<TContext extends IHandlerContext = IHandlerContext
    *
    * @param handlers - An array of handlers to connect in sequence.
    */
-  static connect(handlers: Handler[]) {
+  static connect(handlers: Handler[]): void {
     for (let i = 0; i < handlers.length - 1; i++) {
       handlers[i].next = handlers[i + 1];
     }
@@ -181,7 +181,7 @@ export abstract class Handler<TContext extends IHandlerContext = IHandlerContext
    * @param ctx - The execution context passed along the chain.
    * @returns A promise that resolves when this handler and any subsequent handlers complete.
    */
-  async handle(ctx: TContext) {
+  async handle(ctx: TContext): Promise<void> {
     await this.next?.handle(ctx);
   }
 }
@@ -207,7 +207,7 @@ export class HandlerPipeline<TContext extends IHandlerContext = IHandlerContext>
    * @param ctx - The execution context passed along the chain.
    * @returns A promise that resolves when this pipeline and any subsequent handlers complete.
    */
-  async handle(ctx: TContext) {
+  async handle(ctx: TContext): Promise<TContext> {
     await this.handlers[0]?.handle(ctx);
     return ctx;
   }

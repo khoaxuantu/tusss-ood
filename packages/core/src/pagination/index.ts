@@ -71,14 +71,14 @@ export class Pagination extends Model<Pagination> implements PaginationParams {
   /**
    * The number of items to skip/offset for database or API queries.
    */
-  get skip() {
+  get skip(): number {
     return (this.page - 1) * this.perPage;
   }
 
   /**
    * The maximum number of items to return (alias for `perPage`).
    */
-  get limit() {
+  get limit(): number {
     return this.perPage;
   }
 

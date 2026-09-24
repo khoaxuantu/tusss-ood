@@ -19,11 +19,11 @@
   ],
   "author": "Xuan Khoa Tu Nguyen",
   "license": "MIT",
-  "packageManager": "pnpm@12.5.1",
+  "packageManager": "pnpm@12.6.0",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.11.0",
     "globals": "^17.12.0",
-    "typescript-eslint": "^8.70.0"
+    "typescript-eslint": "^8.70.1"
   }
 }

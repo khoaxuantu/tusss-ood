@@ -1,4 +1,4 @@
-import dts from "bun-plugin-dts";
+import dts from "bun-plugin-dtsx";
 
 async function build() {
   await Bun.build({
@@ -9,7 +9,12 @@ async function build() {
     minify: true,
     format: "esm",
     tsconfig: "./d.tsconfig.json",
-    plugins: [dts()],
+    plugins: [
+      dts({
+        keepComments: true,
+        tsconfigPath: "./d.tsconfig.json",
+      }),
+    ],
   });
 
   await Bun.build({

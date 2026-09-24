@@ -26,7 +26,7 @@ export class TimerStopwatch implements Printer {
   /**
    * Gets the elapsed time recorded during the last call to {@link elapse}, in milliseconds.
    */
-  get lapseMs() {
+  get lapseMs(): number {
     return this.lastLapse;
   }
 
@@ -35,7 +35,7 @@ export class TimerStopwatch implements Printer {
    *
    * @returns The elapsed time in milliseconds.
    */
-  elapse() {
+  elapse(): number {
     this.lastLapse = performance.now() - this.start;
     return this.lastLapse;
   }
@@ -75,7 +75,7 @@ export const Timer = {
    *
    * @returns A new {@link TimerStopwatch} instance.
    */
-  stopwatch: (opt?: { precision?: number }) => {
+  stopwatch: (opt?: { precision?: number }): TimerStopwatch => {
     const start = performance.now();
     return new TimerStopwatch(start, opt);
   },
@@ -86,5 +86,5 @@ export const Timer = {
    * @param ms - The duration to pause in milliseconds.
    * @returns A promise that resolves after the specified duration.
    */
-  delay: (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)),
+  delay: (ms: number): Promise<void> => new Promise<void>((resolve) => setTimeout(resolve, ms)),
 } as const;

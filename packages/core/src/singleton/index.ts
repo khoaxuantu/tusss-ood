@@ -28,7 +28,7 @@ import { Constructor } from "../types";
  * console.log(db1 === db2); // true
  * ```
  */
-export function Singleton<T extends Constructor>(cls: T) {
+export function Singleton<T extends Constructor>(cls: T): T & { instance: InstanceType<T> } {
   let _instance: InstanceType<T>;
 
   class MixinClass extends cls {

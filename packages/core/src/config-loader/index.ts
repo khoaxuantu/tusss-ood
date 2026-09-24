@@ -57,7 +57,7 @@ export abstract class ConfigLoaderPool<TEnv = EnvironmentType, TConfig = Config>
    * @param key The environment key to retrieve the loader for.
    * @returns The configuration loader associated with the environment, or the default loader.
    */
-  get(key: TEnv) {
+  get(key: TEnv): IConfigLoader<TConfig> {
     const loader = this.pool.get(key);
     if (!loader) return this.defaultLoader;
     return loader;
@@ -146,7 +146,7 @@ export class ConfigLoaderDirector<TEnv = EnvironmentType, TConfig = Config> {
    *
    * @returns A promise resolving to the loaded configuration.
    */
-  load() {
+  load(): Promise<TConfig> {
     const loader = this.pool.get(this.getEnv());
     return loader.load();
   }
@@ -157,7 +157,7 @@ export class ConfigLoaderDirector<TEnv = EnvironmentType, TConfig = Config> {
    * @param getter A callback function returning the environment.
    * @returns The current director instance for method chaining.
    */
-  customizeEnv(getter: () => TEnv) {
+  customizeEnv(getter: () => TEnv): this {
     this.getEnv = getter;
     return this;
   }

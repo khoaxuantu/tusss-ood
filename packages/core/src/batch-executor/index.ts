@@ -89,21 +89,21 @@ export class BatchExecutor<TOps> {
   /**
    * Gets the current number of queued operations in the batch.
    */
-  get size() {
+  get size(): number {
     return this.ops.length;
   }
 
   /**
    * Checks whether the batch size has reached or exceeded the configured capacity.
    */
-  get isFull() {
+  get isFull(): boolean {
     return this.size >= this.capacity;
   }
 
   /**
    * Checks whether there are no operations currently queued in the batch.
    */
-  get isEmpty() {
+  get isEmpty(): boolean {
     return !this.size;
   }
 
@@ -112,7 +112,7 @@ export class BatchExecutor<TOps> {
    *
    * @param op - The operation or item to add.
    */
-  add(op: TOps) {
+  add(op: TOps): void {
     this.ops.push(op);
   }
 
@@ -121,7 +121,7 @@ export class BatchExecutor<TOps> {
    *
    * @returns A promise that resolves when the execution is complete.
    */
-  async execAndFlush() {
+  async execAndFlush(): Promise<void> {
     await this.execute(this.ops);
     this.ops = [];
   }
