@@ -1,7 +1,13 @@
 import { ErrorBase } from "../error";
+import { Result } from "../result";
 
 /**
  * Represents the execution context passed between handlers in a chain of responsibility.
+ *
+ * @deprecated This interface has to explicitly define the output and error.
+ * We should utilize {@link Result} on the output by using {@link HandlerContext} instead.
+ *
+ * @todo This interface is going to be removed in v2.
  *
  * @template TInput - The type of the input data. Defaults to `any`.
  * @template TOutput - The type of the output data. Defaults to `any`.
@@ -24,6 +30,41 @@ export interface IHandlerContext<TInput = any, TOutput = any> {
 }
 
 /**
+ * Represents the execution context passed between handlers in a chain of responsibility.
+ *
+ * @template TInput - The type of the input data. Defaults to `any`.
+ * @template TOutput - The type of the output data. Defaults to `Result<any>`
+ *
+ */
+export abstract class HandlerContext<TInput = any, TOutput extends Result<any> = Result<any>> {
+  /**
+   * The input payload provided to the chain.
+   */
+  input: TInput;
+
+  /**
+   * The output data produced or modified along the chain.
+   */
+  output: TOutput;
+
+  constructor(input: TInput, output: TOutput) {
+    this.input = input;
+    this.output = output;
+  }
+
+  /*
+   * An shorthand accessor for the error on the output.
+   */
+  get error(): ErrorBase | undefined {
+    return this.output.error;
+  }
+
+  set error(err: ErrorBase | undefined) {
+    this.output.error = err;
+  }
+}
+
+/**
  * An abstract base class implementing the Chain of Responsibility design pattern.
  *
  * Handlers can process incoming context, mutate output, flag errors, and forward
@@ -34,21 +75,10 @@ export interface IHandlerContext<TInput = any, TOutput = any> {
  * @example
  * Chaining a validation handler and an update handler through a shared context
  * ```ts
- * class OrderContext implements IHandlerContext {
- *   input: { orderId: string; amount: number };
- *   output: { status: string };
- *   error?: ErrorBase;
- *
- *   constructor(
- *     input: OrderContext["input"],
- *     output: OrderContext["output"],
- *     error?: ErrorBase,
- *   ) {
- *     this.input = input;
- *     this.output = output;
- *     this.error = error;
- *   }
- * }
+ * class OrderContext extends HandlerContext<
+ *   { orderId: string; amount: number },
+ *   Result<{ status: string }>,
+ * > {}
  *
  * class ErrorApp extends ErrorBase {
  *   override name: string = "ErrorApp";
@@ -66,7 +96,7 @@ export interface IHandlerContext<TInput = any, TOutput = any> {
  *
  * class ProcessOrderHandler extends Handler<OrderContext> {
  *   override async handle(ctx: OrderContext) {
- *     ctx.output.status = "processed";
+ *     ctx.output.data.status = "processed";
  *     await super.handle(ctx);
  *   }
  * }
@@ -77,7 +107,7 @@ export interface IHandlerContext<TInput = any, TOutput = any> {
  *
  * const context = new OrderContext(
  *   { orderId: "ORD-123", amount: 100 },
- *   { status: "pending" },
+ *   new Result({ data: { status: "pending" } }),
  * );
  *
  * await validator.handle(context);
@@ -87,21 +117,10 @@ export interface IHandlerContext<TInput = any, TOutput = any> {
  * @example
  * Authentication and request logging pipeline
  * ```ts
- * class RequestContext implements IHandlerContext {
- *   input: { token?: string; path: string };
- *   output: { authenticated: boolean };
- *   error?: ErrorBase;
- *
- *   constructor(
- *     input: RequestContext["input"],
- *     output: RequestContext["output"],
- *     error?: ErrorBase,
- *   ) {
- *     this.input = input;
- *     this.output = output;
- *     this.error = error;
- *   }
- * }
+ * class RequestContext implements HandlerContext<
+ *   { token?: string; path: string },
+ *   Result<{ authenticated: boolean }>,
+ * > {}
  *
  * class ErrorApp extends ErrorBase {
  *   override name: string = "ErrorApp";
@@ -120,7 +139,7 @@ export interface IHandlerContext<TInput = any, TOutput = any> {
  *       ctx.error = new ErrorApp("UNAUTHORIZED", "Missing authentication token");
  *       return;
  *     }
- *     ctx.output.authenticated = true;
+ *     ctx.output.data.authenticated = true;
  *     await super.handle(ctx);
  *   }
  * }
@@ -131,7 +150,7 @@ export interface IHandlerContext<TInput = any, TOutput = any> {
  *
  * const ctx = new RequestContext(
  *   { path: "/api/dashboard", token: "secret-token" },
- *   { authenticated: false },
+ *   new Result({ data: { authenticated: false } }),
  * );
  *
  * await logger.handle(ctx);
@@ -145,7 +164,7 @@ export abstract class Handler<TContext extends IHandlerContext = IHandlerContext
    *
    * @param handlers - An array of handlers to connect in sequence.
    */
-  static connect(handlers: Handler[]) {
+  static connect(handlers: Handler[]): void {
     for (let i = 0; i < handlers.length - 1; i++) {
       handlers[i].next = handlers[i + 1];
     }
@@ -162,7 +181,7 @@ export abstract class Handler<TContext extends IHandlerContext = IHandlerContext
    * @param ctx - The execution context passed along the chain.
    * @returns A promise that resolves when this handler and any subsequent handlers complete.
    */
-  async handle(ctx: TContext) {
+  async handle(ctx: TContext): Promise<void> {
     await this.next?.handle(ctx);
   }
 }
@@ -188,7 +207,7 @@ export class HandlerPipeline<TContext extends IHandlerContext = IHandlerContext>
    * @param ctx - The execution context passed along the chain.
    * @returns A promise that resolves when this pipeline and any subsequent handlers complete.
    */
-  async handle(ctx: TContext) {
+  async handle(ctx: TContext): Promise<TContext> {
     await this.handlers[0]?.handle(ctx);
     return ctx;
   }

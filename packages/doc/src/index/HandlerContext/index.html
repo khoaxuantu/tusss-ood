@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="default" lang="en" data-base="../../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>FactoryMaterial | @tusss/ood</title><meta name="description" content="Documentation for @tusss/ood"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../../assets/style.css"/><link rel="stylesheet" href="../../assets/highlight.css"/><link rel="stylesheet" href="../../assets/custom.css"/><script defer src="../../assets/main.js"></script><script async src="../../assets/icons.js" id="tsd-icons-script"></script><script async src="../../assets/search.js" id="tsd-search-script"></script><script async src="../../assets/navigation.js" id="tsd-nav-script"></script><script async src="../../assets/hierarchy.js" id="tsd-hierarchy-script"></script><style>
+<!DOCTYPE html><html class="default" lang="en" data-base="../../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>HandlerContext | @tusss/ood</title><meta name="description" content="Documentation for @tusss/ood"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../../assets/style.css"/><link rel="stylesheet" href="../../assets/highlight.css"/><link rel="stylesheet" href="../../assets/custom.css"/><script defer src="../../assets/main.js"></script><script async src="../../assets/icons.js" id="tsd-icons-script"></script><script async src="../../assets/search.js" id="tsd-search-script"></script><script async src="../../assets/navigation.js" id="tsd-nav-script"></script><script async src="../../assets/hierarchy.js" id="tsd-hierarchy-script"></script><style>
 @media (prefers-color-scheme: dark) {
   :root {
     --md-sys-color-primary: #aac7ff;
@@ -167,21 +167,22 @@
 <div class="tsd-page-title">
 <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
 <li><a href="../../index-1/">index</a></li>
-<li><a href="" aria-current="page">FactoryMaterial</a></li></ul>
-<h1>Class FactoryMaterial&lt;T&gt;<code class="tsd-tag">Abstract</code></h1></div>
+<li><a href="" aria-current="page">HandlerContext</a></li></ul>
+<h1>Class HandlerContext&lt;TInput, TOutput&gt;<code class="tsd-tag">Abstract</code></h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>Abstract base class representing a material used by a factory to create products.</p>
-<p>Each material must have a distinct type associated with it, which is used
-by the <a href="../FactoryDirector/" class="tsd-kind-class">FactoryDirector</a> to dispatch the material to the correct factory.</p>
+<div class="tsd-comment tsd-typography"><p>Represents the execution context passed between handlers in a chain of responsibility.</p>
 </div></section>
 <section class="tsd-panel">
 <h4>Type Parameters</h4>
 <ul class="tsd-type-parameter-list">
-<li><span id="t"><span class="tsd-kind-type-parameter">T</span> <span class="tsd-signature-keyword">extends</span> <span class="tsd-signature-type">string</span> = <span class="tsd-signature-type">string</span></span>
-<div class="tsd-comment tsd-typography"><p>The type constraint for the material's type identifier, defaulting to <code>string</code>.</p>
+<li><span id="tinput"><span class="tsd-kind-type-parameter">TInput</span> = <span class="tsd-signature-type">any</span></span>
+<div class="tsd-comment tsd-typography"><p>The type of the input data. Defaults to <code>any</code>.</p>
+</div></li>
+<li><span id="toutput"><span class="tsd-kind-type-parameter">TOutput</span> <span class="tsd-signature-keyword">extends</span> <a href="../Result/" class="tsd-signature-type tsd-kind-class">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span> = <a href="../Result/" class="tsd-signature-type tsd-kind-class">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></span>
+<div class="tsd-comment tsd-typography"><p>The type of the output data. Defaults to <code>Result&lt;any&gt;</code></p>
 </div></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/khoaxuantu/tusss-ood/tree/main/packages/core/src/factory/index.ts#L9" class="external" target="_blank">factory/index.ts:9</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/khoaxuantu/tusss-ood/tree/main/packages/core/src/handler/index.ts#L39" class="external" target="_blank">handler/index.ts:39</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-accordion" open><summary class="tsd-accordion-summary tsd-index-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../../assets/icons.svg#icon-chevronDown"></use></svg>
@@ -193,7 +194,12 @@ by the <a href="../FactoryDirector/" class="tsd-kind-class">FactoryDirector</a> 
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading tsd-anchor-link" id="properties">Properties<a href="#properties" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<div class="tsd-index-list"><a href="#type" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../../assets/icons.svg#icon-1024"></use></svg><span>type</span></a>
+<div class="tsd-index-list"><a href="#input" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../../assets/icons.svg#icon-1024"></use></svg><span>input</span></a>
+<a href="#output" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../../assets/icons.svg#icon-1024"></use></svg><span>output</span></a>
+</div></section>
+<section class="tsd-index-section">
+<h3 class="tsd-index-heading tsd-anchor-link" id="accessors">Accessors<a href="#accessors" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-index-list"><a href="#error" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../../assets/icons.svg#icon-262144"></use></svg><span>error</span></a>
 </div></section></div></details></section></section>
 <details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Constructors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../../assets/icons.svg#icon-chevronDown"></use></svg>
 <h2 class="tsd-anchor-link" id="constructors-1">Constructors<a href="#constructors-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
@@ -202,25 +208,64 @@ by the <a href="../FactoryDirector/" class="tsd-kind-class">FactoryDirector</a> 
 <h3 class="tsd-anchor-link" id="constructor"><span>constructor</span><a href="#constructor" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="">
-<div class="tsd-signature tsd-anchor-link" id="constructorfactorymaterial"><span class="tsd-signature-keyword">new</span> <span class="tsd-kind-constructor-signature">FactoryMaterial</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#constructorfactorymaterialt">T</a> <span class="tsd-signature-keyword">extends</span> <span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">=</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type tsd-kind-class">FactoryMaterial</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#t">T</a><span class="tsd-signature-symbol">&gt;</span><a href="#constructorfactorymaterial" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></div>
+<div class="tsd-signature tsd-anchor-link" id="constructorhandlercontext"><span class="tsd-signature-keyword">new</span> <span class="tsd-kind-constructor-signature">HandlerContext</span><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#constructorhandlercontexttinput">TInput</a> <span class="tsd-signature-symbol">=</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">,</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="#constructorhandlercontexttoutput">TOutput</a> <span class="tsd-signature-keyword">extends</span> <a href="../Result/" class="tsd-signature-type tsd-kind-class">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span> <span class="tsd-signature-symbol">=</span> <a href="../Result/" class="tsd-signature-type tsd-kind-class">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">input</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="#tinput">TInput</a><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">output</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="#toutput">TOutput</a><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type tsd-kind-class">HandlerContext</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#tinput">TInput</a><span class="tsd-signature-symbol">,</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="#toutput">TOutput</a><span class="tsd-signature-symbol">&gt;</span><a href="#constructorhandlercontext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></div>
 <div class="tsd-description">
 <section class="tsd-panel">
 <h4>Type Parameters</h4>
 <ul class="tsd-type-parameter-list">
-<li><span id="constructorfactorymaterialt"><span class="tsd-kind-type-parameter">T</span> <span class="tsd-signature-keyword">extends</span> <span class="tsd-signature-type">string</span> = <span class="tsd-signature-type">string</span></span>
-<div class="tsd-comment tsd-typography"><p>The type constraint for the material's type identifier, defaulting to <code>string</code>.</p>
+<li><span id="constructorhandlercontexttinput"><span class="tsd-kind-type-parameter">TInput</span> = <span class="tsd-signature-type">any</span></span>
+<div class="tsd-comment tsd-typography"><p>The type of the input data. Defaults to <code>any</code>.</p>
+</div></li>
+<li><span id="constructorhandlercontexttoutput"><span class="tsd-kind-type-parameter">TOutput</span> <span class="tsd-signature-keyword">extends</span> <a href="../Result/" class="tsd-signature-type tsd-kind-class">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span> = <a href="../Result/" class="tsd-signature-type tsd-kind-class">Result</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></span>
+<div class="tsd-comment tsd-typography"><p>The type of the output data. Defaults to <code>Result&lt;any&gt;</code></p>
 </div></li></ul></section>
-<h4 class="tsd-returns-title">Returns <a href="" class="tsd-signature-type tsd-kind-class">FactoryMaterial</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#t">T</a><span class="tsd-signature-symbol">&gt;</span></h4></div></li></ul></section></section></details>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">input</span>: <a class="tsd-signature-type tsd-kind-type-parameter" href="#tinput">TInput</a></span></li>
+<li><span><span class="tsd-kind-parameter">output</span>: <a class="tsd-signature-type tsd-kind-type-parameter" href="#toutput">TOutput</a></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <a href="" class="tsd-signature-type tsd-kind-class">HandlerContext</a><span class="tsd-signature-symbol">&lt;</span><a class="tsd-signature-type tsd-kind-type-parameter" href="#tinput">TInput</a><span class="tsd-signature-symbol">,</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="#toutput">TOutput</a><span class="tsd-signature-symbol">&gt;</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/khoaxuantu/tusss-ood/tree/main/packages/core/src/handler/index.ts#L50" class="external" target="_blank">handler/index.ts:50</a></li></ul></aside></div></li></ul></section></section></details>
 <details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Properties"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../../assets/icons.svg#icon-chevronDown"></use></svg>
 <h2 class="tsd-anchor-link" id="properties-1">Properties<a href="#properties-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
 <section>
 <section class="tsd-panel tsd-member">
-<h3 class="tsd-anchor-link" id="type"><code class="tsd-tag">Abstract</code> <code class="tsd-tag">Readonly</code><span>type</span><a href="#type" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">type</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="#t">T</a></div>
-<div class="tsd-comment tsd-typography"><p>The unique type identifier for this material.</p>
+<h3 class="tsd-anchor-link" id="input"><span>input</span><a href="#input" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">input</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="#tinput">TInput</a></div>
+<div class="tsd-comment tsd-typography"><p>The input payload provided to the chain.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/khoaxuantu/tusss-ood/tree/main/packages/core/src/factory/index.ts#L13" class="external" target="_blank">factory/index.ts:13</a></li></ul></aside></section></section></details></div>
+<li>Defined in <a href="https://github.com/khoaxuantu/tusss-ood/tree/main/packages/core/src/handler/index.ts#L43" class="external" target="_blank">handler/index.ts:43</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="output"><span>output</span><a href="#output" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">output</span><span class="tsd-signature-symbol">:</span> <a class="tsd-signature-type tsd-kind-type-parameter" href="#toutput">TOutput</a></div>
+<div class="tsd-comment tsd-typography"><p>The output data produced or modified along the chain.</p>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/khoaxuantu/tusss-ood/tree/main/packages/core/src/handler/index.ts#L48" class="external" target="_blank">handler/index.ts:48</a></li></ul></aside></section></section></details>
+<details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Accessors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../../assets/icons.svg#icon-chevronDown"></use></svg>
+<h2 class="tsd-anchor-link" id="accessors-1">Accessors<a href="#accessors-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h2></summary>
+<section>
+<section class="tsd-panel tsd-member">
+<h3 class="tsd-anchor-link" id="error"><span>error</span><a href="#error" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../../assets/icons.svg#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li>
+<div class="tsd-signature" id="errorerror"><span class="tsd-signature-keyword">get</span> <span class="tsd-kind-get-signature">error</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span> <a href="../ErrorBase/" class="tsd-signature-type tsd-kind-class">ErrorBase</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">undefined</span></div>
+<div class="tsd-description">
+<h4 class="tsd-returns-title">Returns <a href="../ErrorBase/" class="tsd-signature-type tsd-kind-class">ErrorBase</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">undefined</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/khoaxuantu/tusss-ood/tree/main/packages/core/src/handler/index.ts#L58" class="external" target="_blank">handler/index.ts:58</a></li></ul></aside></div></li>
+<li>
+<div class="tsd-signature" id="errorerror-1"><span class="tsd-signature-keyword">set</span> <span class="tsd-kind-set-signature">error</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">err</span><span class="tsd-signature-symbol">:</span> <a href="../ErrorBase/" class="tsd-signature-type tsd-kind-class">ErrorBase</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">void</span></div>
+<div class="tsd-description">
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li><span><span class="tsd-kind-parameter">err</span>: <a href="../ErrorBase/" class="tsd-signature-type tsd-kind-class">ErrorBase</a> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">undefined</span></span></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/khoaxuantu/tusss-ood/tree/main/packages/core/src/handler/index.ts#L62" class="external" target="_blank">handler/index.ts:62</a></li></ul></aside></div></li></ul></section></section></details></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -238,7 +283,9 @@ by the <a href="../FactoryDirector/" class="tsd-kind-class">FactoryDirector</a> 
 <details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Constructors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../../assets/icons.svg#icon-chevronDown"></use></svg>Constructors</summary>
 <div><a href="#constructor"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Constructor"><use href="../../assets/icons.svg#icon-512"></use></svg><span>constructor</span></a></div></details>
 <details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Properties"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../../assets/icons.svg#icon-chevronDown"></use></svg>Properties</summary>
-<div><a href="#type"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../../assets/icons.svg#icon-1024"></use></svg><span>type</span></a></div></details></div></details></div>
+<div><a href="#input"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../../assets/icons.svg#icon-1024"></use></svg><span>input</span></a><a href="#output"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../../assets/icons.svg#icon-1024"></use></svg><span>output</span></a></div></details>
+<details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Accessors"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../../assets/icons.svg#icon-chevronDown"></use></svg>Accessors</summary>
+<div><a href="#error"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Accessor"><use href="../../assets/icons.svg#icon-262144"></use></svg><span>error</span></a></div></details></div></details></div>
 <div class="site-menu">
 <nav id="tsd-sidebar-links" class="tsd-navigation"><a href="https://github.com/khoaxuantu/tusss-ood" class="tsd-nav-link">GitHub</a><a href="https://xuankhoatu.com/about" class="tsd-nav-link">About Me</a></nav>
 <nav class="tsd-navigation"><a href="../../modules.html">@tusss/ood</a>
