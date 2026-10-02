@@ -243,4 +243,4 @@
 .hl-29 { color: var(--hl-29); }
 .hl-30 { color: var(--hl-30); }
 .hl-31 { color: var(--hl-31); }
-pre, code { background: var(--code-background); }
+pre, code, math[display='block'] { background: var(--code-background); }

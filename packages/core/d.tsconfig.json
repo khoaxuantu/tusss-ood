@@ -6,6 +6,7 @@
     "outDir": "dist",
     "declaration": true,
     "emitDeclarationOnly": true,
-    "composite": true
-  }
+    "composite": true,
+    "isolatedDeclarations": true,
+  },
 }

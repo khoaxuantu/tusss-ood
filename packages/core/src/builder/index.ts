@@ -72,7 +72,7 @@ export abstract class Builder<TProduct> {
    * Indicates whether the builder has performed/registered any modifications
    * on the product.
    */
-  get isActive() {
+  get isActive(): boolean {
     return this._isActive;
   }
 
@@ -81,7 +81,7 @@ export abstract class Builder<TProduct> {
    *
    * @returns The constructed product of type `TProduct`.
    */
-  build() {
+  build(): TProduct {
     return this.product;
   }
 
@@ -94,7 +94,7 @@ export abstract class Builder<TProduct> {
    * it.
    * @returns The builder instance (`this`) to allow fluent method chaining.
    */
-  register(fn: (product: TProduct) => void) {
+  register(fn: (product: TProduct) => void): this {
     fn(this.product);
     this._isActive = true;
     return this;

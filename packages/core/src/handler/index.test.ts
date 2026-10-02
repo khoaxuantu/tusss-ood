@@ -1,7 +1,8 @@
 import { describe, it } from "#test";
 import { expect } from "@std/expect";
 import { ErrorBase } from "../error";
-import { Handler, HandlerPipeline, IHandlerContext } from "./index";
+import { Result } from "../result";
+import { Handler, HandlerContext, HandlerPipeline } from "./index";
 
 class ErrorHandler extends ErrorBase {
   override name: string = "ErrorHandler";
@@ -28,22 +29,13 @@ class Transaction {
   }
 }
 
-class Context implements IHandlerContext {
-  input: {
+class Context extends HandlerContext<
+  {
     id: number;
     status: "pending" | "processing" | "completed" | "failed";
-  };
-  output: {
-    transaction: Transaction;
-  };
-  error?: ErrorBase | undefined;
-
-  constructor(input: Context["input"], output: Context["output"], error?: ErrorBase) {
-    this.input = input;
-    this.output = output;
-    this.error = error;
-  }
-}
+  },
+  Result<Transaction>
+> {}
 
 class HandlerValidation extends Handler<Context> {
   async handle(ctx: Context): Promise<void> {
@@ -59,7 +51,7 @@ class HandlerValidation extends Handler<Context> {
 
 class HandlerUpdate extends Handler<Context> {
   async handle(ctx: Context): Promise<void> {
-    ctx.output.transaction.status = ctx.input.status;
+    ctx.output.data.status = ctx.input.status;
 
     super.handle(ctx);
   }
@@ -81,25 +73,25 @@ describe(Handler, () => {
     it("should execute sequentially", async () => {
       const ctx = new Context(
         { id: 1, status: "processing" },
-        {
-          transaction: new Transaction(1, user1, user2, 100),
-        },
+        new Result({
+          data: new Transaction(1, user1, user2, 100),
+        }),
       );
 
       await pipeline.handle(ctx);
-      expect(ctx.output.transaction.status).toBe("processing");
+      expect(ctx.output.data.status).toBe("processing");
     });
 
     it("should terminate if there is termination in handlers' member", async () => {
       const ctx = new Context(
         { id: -1, status: "processing" },
-        {
-          transaction: new Transaction(1, user1, user2, 100),
-        },
+        new Result({
+          data: new Transaction(1, user1, user2, 100),
+        }),
       );
 
       await pipeline.handle(ctx);
-      expect(ctx.output.transaction.status).toBe("pending");
+      expect(ctx.output.data.status).toBe("pending");
       expect(ctx.error).toBeInstanceOf(ErrorHandler);
     });
   });

@@ -37,7 +37,7 @@ export const DecimalPrecision = {
    * @param decimalPlaces - The number of decimal places to round to. Defaults to 0. Can be negative to round to tens, hundreds, etc.
    * @returns The rounded number.
    */
-  round: (num: number, decimalPlaces: number = 0) => {
+  round: (num: number, decimalPlaces: number = 0): number => {
     const p = Math.pow(10, decimalPlaces);
     const n = num * p * (1 + Number.EPSILON);
     return Math.round(n) / p;
@@ -50,7 +50,7 @@ export const DecimalPrecision = {
    * @param decimalPlaces - The number of decimal places to resolve to. Defaults to 0.
    * @returns The ceiling value of the number resolved to the specified decimal places.
    */
-  ceil: (num: number, decimalPlaces: number = 0) => {
+  ceil: (num: number, decimalPlaces: number = 0): number => {
     const p = Math.pow(10, decimalPlaces);
     const n = num * p * (1 - Math.sign(num) * Number.EPSILON);
     return Math.ceil(n) / p;
@@ -63,7 +63,7 @@ export const DecimalPrecision = {
    * @param decimalPlaces - The number of decimal places to resolve to.
    * @returns The floored value of the number resolved to the specified decimal places.
    */
-  floor: (num: number, decimalPlaces: number) => {
+  floor: (num: number, decimalPlaces: number): number => {
     const p = Math.pow(10, decimalPlaces);
     const n = num * p * (1 + Math.sign(num) * Number.EPSILON);
     return Math.floor(n) / p;
@@ -76,7 +76,7 @@ export const DecimalPrecision = {
    * @param decimalPlaces - The number of decimal places to truncate to.
    * @returns The truncated number.
    */
-  trunc: (num: number, decimalPlaces: number) => {
+  trunc: (num: number, decimalPlaces: number): number => {
     return (num < 0 ? DecimalPrecision.ceil : DecimalPrecision.floor)(num, decimalPlaces);
   },
 
@@ -87,7 +87,7 @@ export const DecimalPrecision = {
    * @param decimalPlaces - The number of digits to appear after the decimal point.
    * @returns A string representation of the number in fixed-point notation.
    */
-  toFixed: (num: number, decimalPlaces: number) => {
+  toFixed: (num: number, decimalPlaces: number): string => {
     return DecimalPrecision.round(num, decimalPlaces).toFixed(decimalPlaces);
   },
 } as const;

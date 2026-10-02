@@ -52,7 +52,7 @@ export class Result<T = never> extends Model<Result<T>> {
    *
    * @returns `true` if there is no error; otherwise `false`.
    */
-  get ok() {
+  get ok(): boolean {
     return !this.error;
   }
 
